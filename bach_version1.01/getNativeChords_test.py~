@@ -1,0 +1,38 @@
+#testan
+
+#Import the library
+
+from midiutil.MidiFile import MIDIFile;
+from chord_type import chord_type;
+from chord import chord;
+
+#the key to test
+Dmajor = chord_type(D4,'maj',D3);
+
+Dchords = Dmajor.getNativeChords();
+Dchords7 = Dmajor.getNativeChords(1);
+
+Fminor = chord_type(F4,'min',F3);
+
+FchordsN = Fminor.getNativeChords(0,'natural');
+FchordsH = Fminor.getNativeChords(0,'harmonic');
+FchordsM = Fminor.getNativeChords(0,'melodic');
+
+FchordsN7 = Fminor.getNativeChords(1,'natural');
+FchordsH7 = Fminor.getNativeChords(1,'harmonic');
+FchordsM7 = Fminor.getNativeChords(1,'melodic');
+
+print Dchords;
+print Dchords7;
+print FchordsN;
+print FchordsH;
+print FchordsM;
+print FchordsN7;
+print FchordsH7;
+print FchordsM7;
+
+#looks good
+
+
+
+

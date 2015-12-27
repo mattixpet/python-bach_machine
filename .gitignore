@@ -1,3 +1,9 @@
+# ignore generated midi files
+*.mid
+
+
+# standard python ignore
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

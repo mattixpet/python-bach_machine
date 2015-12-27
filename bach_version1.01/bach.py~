@@ -1,0 +1,151 @@
+# This is supposed to be an audio library capable of writing midi files and making chords.
+
+#---------imports---------#
+from midiutil.MidiFile import MIDIFile
+
+#---------initialization of variables---------#
+
+#define notes according to general midi standard and wikipedia page piano frequencies
+A0 = 21; 
+Bb0 = 22; 
+B0 = 23; 
+C1 = 24; 
+Db1 = 25; 
+D1 = 26; 
+Eb1 = 27; 
+E1 = 28;
+F1 = 29;
+Gb1 = 30;
+G1 = 31;
+Ab1 = 32;
+A1 = 33;
+Bb1 = 34;
+B1 = 35;
+C2 = 36;
+Db2 = 37;
+D2 = 38;
+Eb2 = 39;
+E2 = 40;
+F2 = 41;
+Gb2 = 42;
+G2 = 43;
+Ab2 = 44;
+A2 = 45;
+Bb2 = 46;
+B2 = 47;
+C3 = 48;
+Db3 = 49;
+D3 = 50;
+Eb3 = 51;
+E3 = 52;
+F3 = 53;
+Gb3 = 54;
+G3 = 55;
+Ab3 = 56;
+A3 = 57;
+Bb3 = 58;
+B3 = 59;
+C4 = 60;
+Db4 = 61;
+D4 = 62;
+Eb4 = 63;
+E4 = 64;
+F4 = 65;
+Gb4 = 66;
+G4 = 67;
+Ab4 = 68;
+A4 = 69;
+Bb4 = 70;
+B4 = 71;
+C5 = 72;
+Db5 = 73;
+D5 = 74;
+Eb5 = 75;
+E5 = 76;
+F5 = 77;
+Gb5 = 78;
+G5 = 79;
+Ab5 = 80;
+A5 = 81;
+Bb5 = 82;
+B5 = 83;
+C6 = 84;
+Db6 = 85;
+D6 = 86;
+Eb6 = 87;
+E6 = 88;
+F6 = 89;
+Gb6 = 90;
+G6 = 91;
+Ab6 = 92;
+A6 = 93;
+Bb6 = 94;
+B6 = 95;
+C7 = 96;
+Db7 = 97;
+D7 = 98;
+Eb7 = 99;
+E7 = 100;
+F7 = 101;
+Gb7 = 102;
+G7 = 103;
+Ab7 = 104;
+A7 = 105;
+Bb7 = 106;
+B7 = 107;
+C8 = 108; 
+
+#---------object declerations---------#
+
+#chord object, contains an array of notes
+class chord:
+    def __init__(self, notes):
+        self.notes = notes;
+    def __repr__(self): #'tostring method'
+        note_str = "Notes:\t ";
+        for li in self.notes:
+            note_str = note_str + str(li) +" ";
+        return note_str+'\n';
+
+#---------functions---------#
+
+#write an array of chords to a midi file seperated by duration (default=8) beats with tempo (default=120)
+#track # from 0-127 (default 0), channel=0 (default), volume= 100(default) at time (default=0)
+#using program (default=19) see general midi
+def writeChords(chords,program=19,duration=8,tempo=120,track=0,channel=0,volume=100,time=0):
+    
+    #changing time, depending on the chords
+    timex = time;
+
+    # Create the MIDIFile Object with 1 track
+    MyMIDI = MIDIFile(1)
+
+    # Add track name and tempo.
+    MyMIDI.addTrackName(track,time,"Track "+str(track))
+    MyMIDI.addTempo(track,time,tempo)
+
+    #write the chord notes of duration duration each
+    for chordx in chords:
+        for note in chordx.notes:
+            MyMIDI.addNote(track,channel,note,timex,duration,volume);
+        timex = timex+duration;
+
+    #change from piano to organ (or value)
+    MyMIDI.addProgramChange(track,channel, time, program);
+
+    # And write it to disk.
+    binfile = open("output.mid", 'wb')
+    MyMIDI.writeFile(binfile)
+    binfile.close()
+
+    #debug
+    #print str(chords);
+    #print str(duration);
+    #print str(tempo);
+    #print str(track);
+    #print str(channel);
+    #print str(volume);
+
+#---------main code---------#
+
+#lol

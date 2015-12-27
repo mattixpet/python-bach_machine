@@ -1,0 +1,17 @@
+#testan
+
+from chord import chord;
+from chord_type import chord_type;
+from midi_notes import *;
+from audio import *;
+
+Dmajor = chord_type(D4,'maj',Gb3);
+
+seedChord = chord([E4, B4, D5, E5]);
+BachChord = Dmajor.makeBachChord(seedChord,makeScale(Dmajor.getTonic(),'major'));
+
+print 'seed: ',seedChord;
+print 'paral: ',BachChord[0];
+print 'valid: ',BachChord[1];
+print 'resul: ',BachChord[2];
+

@@ -1,0 +1,13 @@
+# Chord object
+
+#imports
+from audio import reprNotes;
+
+#chord object, contains an array of notes
+class chord:
+    def __init__(self, notes):
+        self.notes = notes;
+    def __repr__(self): #'tostring method'
+        return reprNotes(self.notes)+'\n';
+
+
