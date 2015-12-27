@@ -4,7 +4,7 @@
 * This is an unfinished project of mine. 
 * The idea was to make a program which could generate chords in progressions similar to Bach's chorales (usage possibilities are e.g. composition).
 * Capabilities so far: 
-  * Can make chords in the same key, given a seed chord and given a final cadence. 
+  * Can make random chords in the same key, given a seed chord and given a final cadence. 
   * Writes this to a MIDI file.
 * Capabilities missing: 
   * Modulation.
@@ -15,10 +15,7 @@
 * Check out a couple of resulting MIDI files in the **samples/** folder!
 
 ## Usage:
-* 
-```
-python bach.py
-```
+* `python bach.py`
 The bach.py script when run once, tries only one sequence of random chords between the given seed and the cadence, and throws an error if unsuccessful.
 * A more practical usage is to use either the **bach.bat** or **bach.sh** script which invokes the main file, **bach.py**, and continuously tries making chords, and saving successful creations to **'bachMidis/bachTest'+randomnumber0-20000000+'.mid'**. Takes maybe a couple of minutes to get a few successful progressions.
 * Editable values to look out for. Most rest in the "main code" in **bach.py**. For example
