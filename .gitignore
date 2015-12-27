@@ -1,6 +1,7 @@
 # ignore generated midi files
 *.mid
-
+# don't ignore the sample .mid files
+!/samples/*
 
 # standard python ignore
 
